@@ -26,6 +26,39 @@ namespace _8._1
             {
                 Console.Write(number + " ");
             }
+            // Пример работы с стеком
+            var stackExample = new Stack<int>();
+            stackExample.Push(10);
+            stackExample.Push(20);
+            Console.WriteLine("\nРабота со стеком:");
+            foreach (var ф in stackExample)
+            {
+                Console.WriteLine(ф);
+            }
+            stackExample.Peek();
+            stackExample.Pop();
+            Console.WriteLine("\nРабота со стеком:");
+            foreach (var ф in stackExample)
+            {
+                Console.WriteLine(ф);
+            }
+
+            // Пример работы с очередью
+            Console.WriteLine("\nРабота с очередью:");
+            var queueExample = new Queue<int>();
+            queueExample.Enqueue(30);
+            queueExample.Enqueue(40);
+            foreach (var ф in queueExample)
+            {
+                Console.WriteLine(ф);
+            }
+            queueExample.Peek();
+            queueExample.Dequeue();
+            Console.WriteLine("\nРабота с очередью:");
+            foreach (var ф in queueExample)
+            {
+                Console.WriteLine(ф);
+            }
         }
     }
 }
