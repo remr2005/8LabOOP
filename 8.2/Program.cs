@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace _8._1
 {
@@ -12,13 +13,34 @@ namespace _8._1
             // Добавление элементов
             customDict.Add("Alice", 30);
             customDict.Add("Bob", 25);
+            customDict.Add("Charlie", 40);
 
-            // Использование индексатора
-            customDict["Charlie"] = 40; // Добавление нового элемента
-            customDict["Alice"] = 35;   // Обновление значения
+            // Измерение времени для поиска по ключу
+            Stopwatch stopwatch = new Stopwatch();
+
+            // Измерим время на поиск ключа 'Alice'
+            stopwatch.Start();
+            var valueAlice = customDict["Alice"]; // Доступ через индексатор
+            stopwatch.Stop();
+            Console.WriteLine($"Время доступа к 'Alice' через индексатор: {stopwatch.ElapsedTicks} тактов.");
+
+            // Измерим время на проверку наличия ключа
+            stopwatch.Reset();
+            stopwatch.Start();
+            bool containsBob = customDict.ContainsKey("Bob");
+            stopwatch.Stop();
+            Console.WriteLine($"Время проверки наличия ключа 'Bob': {stopwatch.ElapsedTicks} тактов.");
+
+            // Измерим время на доступ через TryGetValue
+            stopwatch.Reset();
+            stopwatch.Start();
+            Console.WriteLine(customDict["Bob"]);
+            stopwatch.Stop();
+       
+            Console.WriteLine($"Время доступа к 'Bob': {stopwatch.ElapsedTicks} тактов.");
 
             // Вывод всех ключей и значений
-            Console.WriteLine("Содержимое CustomDict:");
+            Console.WriteLine("\nСодержимое CustomDict:");
             foreach (var pair in customDict)
             {
                 Console.WriteLine($"Key: {pair.Key}, Value: {pair.Value}");
